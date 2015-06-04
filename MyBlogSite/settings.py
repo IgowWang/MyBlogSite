@@ -37,6 +37,9 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    #myApps
+    'blog',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -80,6 +83,7 @@ DATABASES = {
         'NAME': 'myblogdb',
         'USER': 'root',
         'PASSWORD':'password',
+        'PORT' : '8080'
     }
 }
 
