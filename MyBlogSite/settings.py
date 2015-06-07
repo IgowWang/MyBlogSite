@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'MyBlogSite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'IgorSiteDB',
+        'NAME': 'blogdb',
         'USER': 'root',
         'PASSWORD': 'password',
         'HOST': '127.0.0.1',
