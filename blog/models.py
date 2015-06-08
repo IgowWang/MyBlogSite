@@ -1,6 +1,7 @@
 from django.db import models
 import datetime
 from django.utils import timezone
+from django_markdown.models import MarkdownField
 #Create your models here.
 
 #用户
@@ -18,8 +19,8 @@ class EntryQuerySet(models.QuerySet):
         return self.filter(published=True)
 #博客
 class Entry(models.Model):
-    title = models.CharField(max_length=100)
-    body = models.TextField()
+    title = models.CharField(max_length=200)
+    body = MarkdownField()
     slug = models.SlugField(max_length=200,unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
@@ -39,7 +40,7 @@ class Entry(models.Model):
 #评论
 class Comment(models.Model):
     ID = models.CharField(max_length=50,primary_key=True)
-    comment = models.TextField()
+    comment = MarkdownField()
     created_at = models.DateTimeField('created date')
 
 
