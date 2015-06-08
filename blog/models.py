@@ -12,19 +12,30 @@ class User(models.Model):
     name = models.CharField(max_length=50)
     image = models.ImageField()
     created_at = models.DateTimeField('created date')
+
+class EntryQuerySet(models.QuerySet):
+    def published(self):
+        return self.filter(published=True)
 #博客
-class Entrpy(models.Model):
-    ID = models.CharField(max_length=50,primary_key=True)
+class Entry(models.Model):
     title = models.CharField(max_length=100)
-    summary = models.CharField(max_length=200)
-    entrpy = models.TextField()
-    created_at = models.DateTimeField('created date')
+    body = models.TextField()
+    slug = models.SlugField(max_length=200,unique=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
+    objects = EntryQuerySet.as_manager()
 
     def __str__(self):
         return self.title
 
     def was_published_recently(self):
         return self.created_at >= timezone.now() - datetime.timedelta(day=1)
+
+    class Meta:
+        verbose_name = 'Blog Entry'
+        verbose_name_plural = 'Blog Entries'
+        ordering = ["-created_at"]
+
 #评论
 class Comment(models.Model):
     ID = models.CharField(max_length=50,primary_key=True)
