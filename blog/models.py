@@ -25,6 +25,7 @@ class Entry(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
     objects = EntryQuerySet.as_manager()
+    publish = models.BooleanField(default=True)
 
     def __str__(self):
         return self.title
