@@ -18,6 +18,8 @@ from django.contrib import admin
 from blog import views
 
 urlpatterns = [
+    url(r'^$',"blog.views.home",name='home'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^markdown/', include('django_markdown.urls')),
+
 ]
