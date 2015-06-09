@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     #myApps
     'blog',
     'django_markdown',
+    'landing'
 )
 
 MIDDLEWARE_CLASSES = (
