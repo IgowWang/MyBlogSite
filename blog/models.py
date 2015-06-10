@@ -13,7 +13,6 @@ class User(models.Model):
     name = models.CharField(max_length=50)
     image = models.ImageField()
     created_at = models.DateTimeField('created date')
-
 class EntryQuerySet(models.QuerySet):
     def published(self):
         return self.filter(published=True)
@@ -25,7 +24,7 @@ class Entry(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
     objects = EntryQuerySet.as_manager()
-    publish = models.BooleanField(default=True)
+    published = models.BooleanField(default=True)
 
     def __str__(self):
         return self.title

@@ -4,6 +4,7 @@ from . import models
 from django.views import generic
 # Create your views here.
 
-def home(request):
-    return render(request,"home.html",{})
-
+class BlogIndex(generic.ListView):
+    queryset = models.Entry.objects.published()
+    template_name = "bloghome.html"
+    paginate_by =2
