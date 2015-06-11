@@ -11,16 +11,16 @@ def home(request):
     context = {
         "template_title" : title,
         "form":form
-        
+
     }
-    
+
     if form.is_valid():
         instance = form.save(commit=False)
         if not instance.full_name :
             instance.full_name ="wang"
-                
+
         instance.save()
         context = {
                 "template_title":"Thank you"
                 }
-    return render(request,"home.html",context)
+    return render(request,"base1.html",context)
