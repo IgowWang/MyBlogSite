@@ -23,4 +23,4 @@ def home(request):
         context = {
                 "template_title":"Thank you"
                 }
-    return render(request,"base1.html",context)
+    return render(request,"home.html",context)

@@ -38,10 +38,13 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    #third party apps
+
+    'crispy_forms',
     #myApps
     'blog',
     'django_markdown',
-    'landing'
+    'landing',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -118,6 +121,7 @@ STATICFILES_DIRS = (
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,"media","media_root")
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
 #Markdown
 MARKDOWN_EDITOR_SKIN = 'simple'
 
