@@ -1,11 +1,10 @@
 from django.shortcuts import render
 from .forms import SignUpForm
-import django
 # Create your views here.
 def home(request):
     title = "Welcome"
-    if request.user.is_authenticated():
-        title = "My Title %s" %(request.user)
+    #if request.user.is_authenticated():
+        #title = "My "
     #add a form
     form = SignUpForm(request.POST or None)
     context = {
