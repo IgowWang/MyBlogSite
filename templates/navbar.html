@@ -32,10 +32,22 @@
               {% if request.user.is_authenticated %}
               <li><a href="{% url 'auth_logout'%}">注销</a></li>
               {% else %}
-              <li><a href="{% url 'auth_login'%}">登录</a></li>
               <li><a href="{% url 'registration_register'%}">注册</a></li>
               {% endif  %}
           </ul>
+
+
+         {% if not request.user.is_authenticated and not "/accounts/login" in request.get_full_path %}
+         <form class='navbar-form navbar-right' method='POST' action='{% url 'auth_login' %}'>{% csrf_token %}
+              <div class = 'form-group'>
+                  <input type='text' class='form-control' name='username' placehold='username'>
+              </div >
+              <div class = 'form-group'>
+                  <input type='password' class='form-control' name='password' placehold='password'>
+              </div >
+              <button type='submit' class='btn btn-default'>登录</button>
+          {% endif %}
+     
         </div><!--/.nav-collapse -->
       </div>
     </nav>
