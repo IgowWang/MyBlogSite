@@ -21,9 +21,10 @@ from django.conf import settings
 urlpatterns = [
     url(r'^$',"landing.views.home",name='home'),
     url(r'^blog/',include('blog.urls')),
+    url(r'^about',"MyBlogSite.views.about",name='about'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^markdown/', include('django_markdown.urls')),
-
+    url(r'^accounts/', include('registration.backends.default.urls')),
 ]
 
 if settings.DEBUG :

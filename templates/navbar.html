@@ -8,13 +8,13 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">IgorBlog</a>
+          <a class="navbar-brand" href="/">IgorBlog</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
+              <li class="active"><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="/contact">Contact</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
@@ -29,9 +29,12 @@
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="../navbar/">Default</a></li>
-            <li class="active"><a href="./">Static top <span class="sr-only">(current)</span></a></li>
-            <li><a href="../navbar-fixed-top/">Fixed top</a></li>
+              {% if request.user.is_authenticated %}
+              <li><a href="{% url 'auth_logout'%}">注销</a></li>
+              {% else %}
+              <li><a href="{% url 'auth_login'%}">登录</a></li>
+              <li><a href="{% url 'registration_register'%}">注册</a></li>
+              {% endif  %}
           </ul>
         </div><!--/.nav-collapse -->
       </div>

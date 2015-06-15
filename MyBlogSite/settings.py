@@ -35,12 +35,14 @@ INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
     #third party apps
-
     'crispy_forms',
+    'registration',
+
     #myApps
     'blog',
     'django_markdown',
@@ -121,7 +123,16 @@ STATICFILES_DIRS = (
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,"media","media_root")
+
+#CRISPY form tags setting
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
+#django-registration-redux
+ACCOUNT_ACTIVATION_DAYS=7
+REGISTRATION_AUTO_LOGIN=True
+SITE_ID =1
+LOGIN_REDIRECT_URL ='/'
+
 #Markdown
 MARKDOWN_EDITOR_SKIN = 'simple'
 
