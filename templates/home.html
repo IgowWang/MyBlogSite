@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
-
+{% load staticfiles %}
 <style>
 {% block style %}
 
@@ -10,16 +10,13 @@
 <!-- Main component for a primary marketing message or call to action -->
 <div class="jumbotron">
 <div class='row'>
-    <div class='col-sm-6'>
-    <h1>Igor Blog</h1>
-    <p>This my first blog</p>
-    <p>
+    <div class='col-md-4 col-md-offset-1 '>
+         <h1 >Igor Blog</h1>
+        <p>This my first blog</p>
     <a class="btn btn-lg btn-primary" href="../../components/#navbar" role="button">Join me &raquo;</a>
-    </p>
     </div>
-    <div class='col-sm-6' style="background-color:black;height:300px">
-
-
+    <div class='col-md-6' >
+        <img src="{% static 'img/img1.jpg'%}" class = 'img-responsive'/>
     </div>
 </div>
 </div>
