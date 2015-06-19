@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Articles',
             fields=[
-                ('id', models.AutoField(primary_key=True, serialize=False, auto_created=True, verbose_name='ID')),
+                ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True, serialize=False)),
                 ('title', models.CharField(max_length=50)),
                 ('content', django_markdown.models.MarkdownField()),
                 ('publish_time', models.DateTimeField(auto_now_add=True)),
@@ -24,22 +24,23 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Classification',
             fields=[
-                ('id', models.AutoField(primary_key=True, serialize=False, auto_created=True, verbose_name='ID')),
+                ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True, serialize=False)),
                 ('calss_name', models.CharField(max_length=20)),
             ],
         ),
         migrations.CreateModel(
             name='Comment',
             fields=[
-                ('id', models.AutoField(primary_key=True, serialize=False, auto_created=True, verbose_name='ID')),
+                ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True, serialize=False)),
                 ('comment', django_markdown.models.MarkdownField()),
                 ('publish_time', models.DateTimeField(auto_now_add=True)),
+                ('belong_to', models.ForeignKey(null=True, verbose_name='title', to='blog.Articles')),
             ],
         ),
         migrations.CreateModel(
             name='Tag',
             fields=[
-                ('id', models.AutoField(primary_key=True, serialize=False, auto_created=True, verbose_name='ID')),
+                ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True, serialize=False)),
                 ('tag_name', models.CharField(max_length=20)),
                 ('create_time', models.DateTimeField(auto_now_add=True)),
             ],
@@ -47,8 +48,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='User',
             fields=[
-                ('id', models.AutoField(primary_key=True, serialize=False, auto_created=True, verbose_name='ID')),
-                ('user_name', models.CharField(unique=True, max_length=50)),
+                ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True, serialize=False)),
+                ('user_name', models.CharField(max_length=50, unique=True)),
                 ('email', models.EmailField(max_length=254)),
                 ('password', models.CharField(max_length=50)),
                 ('image', models.ImageField(upload_to='')),
@@ -56,13 +57,18 @@ class Migration(migrations.Migration):
             ],
         ),
         migrations.AddField(
+            model_name='comment',
+            name='user',
+            field=models.ForeignKey(null=True, verbose_name='user_name', to='blog.User'),
+        ),
+        migrations.AddField(
             model_name='articles',
             name='class_name',
-            field=models.ForeignKey(to='blog.Classification'),
+            field=models.ForeignKey(verbose_name='class_name', to='blog.Classification'),
         ),
         migrations.AddField(
             model_name='articles',
             name='tags',
-            field=models.ManyToManyField(to='blog.Tag', blank=True),
+            field=models.ManyToManyField(verbose_name='tag_name', blank=True, to='blog.Tag'),
         ),
     ]

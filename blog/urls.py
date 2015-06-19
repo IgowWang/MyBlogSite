@@ -1,6 +1,6 @@
 from django.conf.urls import include,url
-from . import views
+
 
 urlpatterns = [
-    url(r'^$',views.BlogIndex.as_view(),name='index')
+    url(r'^$',"blog.views.blog_index",name='bloghome')
 ]

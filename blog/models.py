@@ -23,7 +23,7 @@ class User(models.Model):
     user_name = models.CharField(max_length=50,unique=True)
     email = models.EmailField()
     password = models.CharField(max_length=50)
-    image = models.ImageField()
+    image = models.ImageField(blank=True)
     created_time = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
