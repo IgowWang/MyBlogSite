@@ -9,7 +9,7 @@ class UserAdmin(admin.ModelAdmin):
     search_fields=['user_name']
 
 class ArticlesAdmin(MarkdownModelAdmin):
-    list_display=('title','class_name','publish_time')
+    list_display=('id','title','class_name','publish_time')
     search_fields=['title']
 
 admin.site.register(User,UserAdmin)

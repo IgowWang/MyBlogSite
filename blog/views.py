@@ -11,5 +11,15 @@ def blog_index(request):
         "blogs" : all_blogs
     }
 
-
     return render(request,"bloghome.html",context)
+
+def content(request,blog_id):
+
+    content = models.Articles.objects.get(id=blog_id)
+
+    context ={
+        "blog":content
+    }
+
+    return render(request,"article.html",context)
+
