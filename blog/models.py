@@ -13,10 +13,10 @@ class Tag(models.Model):
         return  self.tag_name
 #分类，类名
 class Classification(models.Model):
-    calss_name = models.CharField(max_length=20)
+    class_name = models.CharField(max_length=20)
 
     def __str__(self):
-        return self.calss_name
+        return self.class_name
 
 #用户
 class User(models.Model):

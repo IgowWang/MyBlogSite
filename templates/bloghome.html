@@ -10,9 +10,9 @@
     <div class="col-sm-8 blog-main">
     {% for blog in blogs%}
         <div class="blog-post">
-            <h2 class="blog-post-title"><a href='article/{{blog.id}}/'>{{blog.title}}</a></h2>
+            <h2 class="blog-post-title"><a href="{% url 'article' blog.id %}">{{blog.title}}</a></h2>
         <p class="blog-post-meta">{{blog.publish_time}}</p>
-        <p>{{blog.content}}</p>
+        <p>{{blog.content | markdown}}</p>
         </div><!--/.blog-post-->
     {% endfor %}
     <nav>
