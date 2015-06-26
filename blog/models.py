@@ -32,16 +32,16 @@ class User(models.Model):
 #博客
 class Articles(models.Model):
     #标题
-    title = models.CharField(max_length=50)
+    title = models.CharField(max_length=50,verbose_name='标题')
     #内容
-    content = MarkdownField()
+    content = MarkdownField(verbose_name="内容")
     #发表时间
     publish_time = models.DateTimeField(auto_now_add=True)
     update_time = models.DateTimeField(auto_now=True)
     #分类
-    class_name = models.ForeignKey(Classification,verbose_name='class_name')
+    class_name = models.ForeignKey(Classification,verbose_name='类别')
     #标签
-    tags = models.ManyToManyField(Tag,blank=True,verbose_name='tag_name')
+    tags = models.ManyToManyField(Tag,blank=True,verbose_name='标签')
 
 
     def __str__(self):

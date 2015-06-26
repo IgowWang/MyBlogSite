@@ -5,13 +5,15 @@
 
 {% block content %}
 <div class="container">
-    <form>
-        <div class="row">
-
-
-        </div>
+    <div class="row">
+        <div class="col-md-9">
+    <form class="form-horizontal" method="POST" action="">{% csrf_token %}
+        {{form | crispy}}
+         <input class="btn btn-lg btn-primary" type='submit' value='提交'>
+        </input>
     </form>
-
+            </div>
+        </div>
+    </div>
 </div>
-
 {% endblock %}

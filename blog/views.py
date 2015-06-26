@@ -41,7 +41,16 @@ def classification(request,class_id):
 
 def createArticle(request):
 
-    form = CreateArticleForm(request.POST or None)
 
-    return render(request,'create.html',{})
+    form = CreateArticleForm(request.POST or None)
+    context={
+    "form":form
+    }
+    if form.is_valid():
+        form.save()
+        context={}
+
+
+
+    return render(request,'create.html',context)
 
