@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse,Http404
+from django.http import HttpResponseRedirect
 from . import models
 from django.views import generic
 from .forms import CreateArticleForm
@@ -44,12 +44,11 @@ def createArticle(request):
 
     form = CreateArticleForm(request.POST or None)
     context={
-    "form":form
+    "create_form":form
     }
     if form.is_valid():
         form.save()
-        context={}
-
+        HttpResponseRedirect('')
 
 
     return render(request,'create.html',context)

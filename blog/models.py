@@ -2,6 +2,7 @@ from django.db import models
 import datetime
 from django.utils import timezone
 from django_markdown.models import MarkdownField
+from ckeditor.fields import RichTextField
 #Create your models here.
 
 #博客标签
@@ -34,7 +35,7 @@ class Articles(models.Model):
     #标题
     title = models.CharField(max_length=50,verbose_name='标题')
     #内容
-    content = MarkdownField(verbose_name="内容")
+    content = RichTextField(verbose_name="内容")
     #发表时间
     publish_time = models.DateTimeField(auto_now_add=True)
     update_time = models.DateTimeField(auto_now=True)
@@ -49,11 +50,11 @@ class Articles(models.Model):
 
 #评论
 class Comment(models.Model):
-    comment = MarkdownField()
+    comment = RichTextField()
     publish_time = models.DateTimeField(auto_now_add=True)
-    user = models.ForeignKey(User,verbose_name='user_name',null=True)
+    user = models.ForeignKey(User,verbose_name='user_name',null=True,blank='')
 
-    belong_to = models.ForeignKey(Articles,verbose_name='title',null=True)
+    belong_to = models.ForeignKey(Articles,verbose_name='title',null=True,blank='')
     def __str__(self):
         return self.comment
 

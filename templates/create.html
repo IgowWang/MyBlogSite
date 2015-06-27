@@ -1,18 +1,22 @@
 {% extends "base_blog.html" %}
-{% load django_markdown %}
-{% load crispy_forms_tags %}
 {% load staticfiles %}
+{% load crispy_forms_tags %}
+<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <script type="text/javascript" src="{% static 'js/ckeditor/ckeditor/ckeditor.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/ckeditor/ckeditor-init.js' %}"></script>
+</head>
+
 
 {% block content %}
 <div class="container">
     <div class="row">
         <div class="col-md-9">
-    <form class="form-horizontal" method="POST" action="">{% csrf_token %}
-        {{form | crispy}}
-         <input class="btn btn-lg btn-primary" type='submit' value='提交'>
-        </input>
-    </form>
-            </div>
+
+        {{create_form.media}}
+        {% crispy create_form create_form.helper %}
+        </div>
         </div>
     </div>
 </div>

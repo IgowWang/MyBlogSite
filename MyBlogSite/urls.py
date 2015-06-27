@@ -25,6 +25,7 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^markdown/', include('django_markdown.urls')),
     url(r'^accounts/', include('registration.backends.default.urls')),
+    url(r'^ckeditor/', include('ckeditor.urls')),
 ]
 
 if settings.DEBUG :
