@@ -20,12 +20,11 @@ class CreateArticleForm(ModelForm):
         self.helper.form_method='POST'
         self.helper.form_action=''
         self.helper.layout=Layout(
-            Field('title'),
+            Field('title',css_class="form-control", id="title"),
             Field('content',style="width:1000px;height:1000px;",css_class="ckeditor"),
             Field('class_name'),
             Field('tags'),
             Submit('submit', '提交', css_class='btn btn-default')
-
         )
 
 

@@ -41,15 +41,17 @@ def classification(request,class_id):
 
 def createArticle(request):
 
-
+    all_class = models.Classification.objects.all()
     form = CreateArticleForm(request.POST or None)
     context={
-    "create_form":form
+    "classes":all_class,
+    "form":form
     }
-    if form.is_valid():
-        form.save()
-        HttpResponseRedirect('')
-
+    if request.POST:
+        print(request.POST['title'])
+        if form.is_valid():
+            form.save()
+            HttpResponseRedirect('')
 
     return render(request,'create.html',context)
 
