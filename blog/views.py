@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect
 from . import models
 from django.views import generic
 from .forms import CreateArticleForm
+
 # Create your views here.
 
 def blog_index(request):
@@ -15,10 +16,12 @@ def blog_index(request):
 
     return render(request,"bloghome.html",context)
 
+
 def content(request,blog_id):
 
     content = models.Articles.objects.get(id=blog_id)
     all_class = models.Classification.objects.all()
+
 
     context ={
         "blog":content,
@@ -51,7 +54,7 @@ def createArticle(request):
         print(request.POST['title'])
         if form.is_valid():
             form.save()
-            HttpResponseRedirect('')
+
 
     return render(request,'create.html',context)
 
